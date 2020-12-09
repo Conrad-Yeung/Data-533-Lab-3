@@ -5,9 +5,11 @@ import Bank.cards.debit as card_debit
 
 class TestDebitCard(unittest.TestCase):         # test class
     def setUp(self):
+        # Nothing much to do here.
         print('TestDebitCard: Set up')
 
     def tearDown(self):
+        # Nothing much to do here.
         print('TestDebitCard: Tear down')
 
     @classmethod
@@ -19,6 +21,7 @@ class TestDebitCard(unittest.TestCase):         # test class
 
     @classmethod
     def tearDownClass(cls):
+        # Nothing much to do here.
         print('TestDebitCard: tearDownClass')
 
     # Verify setting daily transaction limit function
@@ -27,8 +30,12 @@ class TestDebitCard(unittest.TestCase):         # test class
         c2 = self.debit_card2._card__card_pin
         self.debit_card1.setTransactionLimit(c1, 7777, 2500)
         self.debit_card2.setTransactionLimit(c2, 7777, 3500)
+        
+        self.assertIsInstance(c1, int)
+        self.assertIsInstance(c2, int)
         self.assertEqual(self.debit_card1.daily_trans_limit, 2500)
         self.assertEqual(self.debit_card2.daily_trans_limit, 3500)
+        
         print("TestDebitCard: Function setTransactionLimit testing ... Successful")
 
     # Verify changing card type function
@@ -37,6 +44,10 @@ class TestDebitCard(unittest.TestCase):         # test class
         c2 = self.debit_card2._card__card_pin
         self.debit_card1.changeCardType(c1, 7777, "Gold")
         self.debit_card2.changeCardType(c2, 7777, "Platinum")
+        
+        self.assertIsInstance(c1, int)
+        self.assertIsInstance(c2, int)
         self.assertEqual(self.debit_card1.card_type, "Gold")
         self.assertEqual(self.debit_card2.card_type, "Platinum")
+        
         print("TestDebitCard: Function changeCardType testing ... Successful")

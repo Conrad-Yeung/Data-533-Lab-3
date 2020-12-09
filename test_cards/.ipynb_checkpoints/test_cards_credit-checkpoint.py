@@ -5,9 +5,11 @@ import Bank.cards.credit as card_credit
 
 class TestCreditCard(unittest.TestCase):         # test class
     def setUp(self):
+        # Nothing much to do here.
         print('TestCreditCard: Set up')
 
     def tearDown(self):
+        # Nothing much to do here.
         print('TestCreditCard: Tear down')
 
     @classmethod
@@ -19,6 +21,7 @@ class TestCreditCard(unittest.TestCase):         # test class
 
     @classmethod
     def tearDownClass(cls):
+        # Nothing much to do here.
         print('TestCreditCard: tearDownClass')
 
     # Verify setting credit limit function
@@ -26,9 +29,13 @@ class TestCreditCard(unittest.TestCase):         # test class
         c1 = self.credit_card1._card__card_pin
         c2 = self.credit_card2._card__card_pin
         self.credit_card1.setCreditLimit(c1, 7777, 1500)
-        self.credit_card2.setCreditLimit(c2, 7777, 500)
+        self.credit_card2.setCreditLimit(c2, 7777, 500)       
+        
+        self.assertIsInstance(c1, int)
+        self.assertIsInstance(c2, int)
         self.assertEqual(self.credit_card1.credit_limit, 1500)
         self.assertEqual(self.credit_card2.credit_limit, 500)
+        
         print("TestCreditCard: Function setCreditLimit testing ... Successful")
 
     # Verify setting interest rate function
@@ -36,9 +43,13 @@ class TestCreditCard(unittest.TestCase):         # test class
         c1 = self.credit_card1._card__card_pin
         c2 = self.credit_card2._card__card_pin
         self.credit_card1.setInterestRate(c1, 7777, 7)
-        self.credit_card2.setInterestRate(c2, 7777, 0)
+        self.credit_card2.setInterestRate(c2, 7777, 0)        
+        
+        self.assertIsInstance(c1, int)
+        self.assertIsInstance(c2, int)
         self.assertEqual(self.credit_card1.interest_rate, 7)
         self.assertEqual(self.credit_card2.interest_rate, 0)
+        
         print("TestCreditCard: Function setInterestRate testing ... Successful")
 
     # Verify make payment function
@@ -51,6 +62,8 @@ class TestCreditCard(unittest.TestCase):         # test class
         self.credit_card1.makePayment(c1, 100, "Testing Unit 1")
         self.credit_card2.makePayment(c2, 50, "Testing Unit 2")
 
+        self.assertIsInstance(c1, int)
+        self.assertIsInstance(c2, int)
         self.assertEqual(self.credit_card1.bal_curr, bal1 - 100)
         self.assertEqual(self.credit_card2.bal_curr, bal2 - 50)
         print("TestCreditCard: Function makePayment testing ... Successful")
