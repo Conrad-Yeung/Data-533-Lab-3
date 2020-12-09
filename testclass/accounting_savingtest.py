@@ -2,9 +2,9 @@ import unittest
 from datetime import datetime
 
 
-import bank.accounts.account as acct
-import bank.accounts.chequing as ch
-import bank.accounts.saving as sv
+import Bank.accounts.account as acct
+import Bank.accounts.chequing as ch
+import Bank.accounts.saving as sv
 
 class Testsaving (unittest.TestCase):
     
